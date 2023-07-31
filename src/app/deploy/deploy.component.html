@@ -1,0 +1,142 @@
+
+<div *ngIf="(deployedTokenAddress$ | async) === null" class="w-screen min-h-screen pt-4 pb-12 flex flex-row justify-center items-center text-sm bg-gradient-to-br">
+    <form [formGroup]="deployForm"
+        class="max-w-xl w-full p-8 rounded-md dark:bg-slate-800 dark:border-slate-900 bg-white border border-slate-200">
+        <div class="uppercase font-bold dark:text-indigo-200 text-indigo-700 mb-6 items-center
+     text-center text-lg flex flex-col gap-y-3">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                <path fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z"
+                    clip-rule="evenodd" />
+            </svg>
+
+
+            <div>Deploy Multichain ERC20</div>
+        </div>
+
+        <div class=" flex flex-col gap-y-1">
+            <div class="uppercase font-semibold text-xs dark:text-indigo-200 text-indigo-700">Token name</div>
+            <input formControlName="tokenName" type="text" class="mc-input w-full" placeholder="My Token">
+        </div>
+
+        <div class="mt-4 flex flex-col gap-y-1">
+            <div class="uppercase font-semibold text-xs dark:text-indigo-200 text-indigo-700">Token symbol</div>
+            <div class="flex flex-row items-center px-4 w-full border rounded-md dark:border-slate-900 dark:bg-slate-600
+       border-slate-100">
+                <div class="mr-1 text-slate-500 font-semibold">$</div>
+                <input formControlName="tokenSymbol" type="text" class="mc-input !border-none !px-0 w-full" placeholder="MYTOK">
+            </div>
+        </div>
+
+        <!-- <div class="mt-4 flex flex-col gap-y-1">
+            <div class="uppercase font-semibold text-xs dark:text-indigo-200 text-indigo-700">Decimals</div>
+            <input type="number" class="mc-input w-full" placeholder="18">
+        </div> -->
+
+        <hr class="w-full my-4 dark:border-slate-700 border-slate-100">
+
+        <div class="mt-6 flex flex-col gap-y-1">
+            <div
+                class="uppercase font-semibold text-xs dark:text-indigo-200 text-indigo-700 flex flex-row justify-between">
+                <div>Deploy on</div>
+                <div class="flex flex-row gap-x-2 items-center">
+                    <input (change)="toggleTestnets()" [checked]="showTestnets$ | async" type="checkbox">
+                    <div>Show testnets</div>
+                </div>
+            </div>
+            <div
+                class="border mt-2 dark:border-slate-700 border-slate-100 rounded-md text-xs uppercase font-medium text-slate-700">
+                <div *ngIf="(showTestnets$ | async) === false" class="network-selector">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/eth.png" alt="" srcset="">
+                        Ethereum Mainnet
+                    </div>
+                    <input formControlName="ethSupply" class="py-2 px-4 outline-none border rounded-sm dark:border-slate-900 dark:bg-slate-600"
+                        type="text" placeholder="Supply" name="" id="">
+                </div>
+                <div *ngIf="showTestnets$ | async" class="network-selector dark:bg-transparent ">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/eth.png" alt="" srcset="">
+                        Ethereum Sepolia
+                    </div>
+                    <input formControlName="sepoliaEthSupply" class="py-2 px-4 outline-none border dark:border-slate-900 dark:bg-slate-600 rounded-sm"
+                        type="text" placeholder="Supply" name="" id="">
+
+                </div>
+                <div *ngIf="(showTestnets$ | async) === false" class="network-selector">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/matic.png" alt="" srcset="">
+                        Polygon Mainnet
+                    </div>
+                    <input formControlName="maticSupply" class="py-2 px-4 outline-none border rounded-sm dark:border-slate-900 dark:bg-slate-600"
+                        type="text" placeholder="Supply" name="" id="">
+
+                </div>
+                <div *ngIf="showTestnets$ | async" class="network-selector dark:bg-transparent ">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/matic.png" alt="" srcset="">
+                        Polygon Mumbai
+                    </div>
+                    <input formControlName="mumbaiMaticSupply"
+                         class="py-2 px-4 outline-none border rounded-sm dark:border-slate-900 dark:bg-slate-600"
+                        type="text" placeholder="Supply" name="" id="">
+
+                </div>
+                <div *ngIf="(showTestnets$ | async) === false" class="network-selector">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/op.png" alt="" srcset="">
+                        Optimism Mainnet
+                    </div>
+                    <input formControlName="opSupply" class="py-2 px-4 outline-none border rounded-sm dark:border-slate-900 dark:bg-slate-600"
+                        type="text" placeholder="Supply" name="" id="">
+
+                </div>
+                <div *ngIf="showTestnets$ | async" class="network-selector dark:bg-transparent ">
+                    <div class="flex flex-row gap-x-2 items-center">
+                        <img class="h-4 w-4" src="../assets/op.png" alt="" srcset="">
+                        Optimism Goerli
+                    </div>
+                    <input formControlName="goerliOpSupply"
+                         class="py-2 px-4 outline-none border rounded-sm dark:border-slate-900 dark:bg-slate-600"
+                        type="text" placeholder="Supply" name="" id="">
+
+                </div>
+                
+            </div>
+        </div>
+
+        <button (click)="deploy()" [disabled]="!deployForm.valid" class="app-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd"
+                    d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6.39-2.908a.75.75 0 01.766.027l3.5 2.25a.75.75 0 010 1.262l-3.5 2.25A.75.75 0 018 12.25v-4.5a.75.75 0 01.39-.658z"
+                    clip-rule="evenodd" />
+            </svg>
+            <div *ngIf="(deployementLoading$ | async);else button">
+                Loading...
+            </div>
+            <ng-template #button>
+                Deploy
+            </ng-template>
+        </button>
+        
+    </form>
+</div>
+
+<div class="w-full flex flex-row justify-center pt-16 text-sm" *ngIf="deployedTokenAddress$ | async as address">
+   
+    <div class="max-w-xl w-full rounded-md border flex  flex-col items-center border-slate-100 bg-white p-8">
+        <div class="flex flex-row items-center gap-x-2 uppercase text-base font-bold text-green-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>Success</div>
+        </div>
+        <div class="mt-8 text-slate-500 text-center">You have deployed a multichain ERC20 token. <br> <br> The token address is: <b>{{address}}</b> </div>
+        
+        <div class="text-center text-sm text-slate-500 mt-8">It may take up to 30 minutes for deployments on all networks to be finalized. Check the stauts of your deployments by clicking the button below.</div>
+        <a target="_blank" *ngIf="deployedTokenTxHash$ | async as txHash" href="https://ccip.chain.link/tx/{{txHash}}" 
+            class="app-button">Check status</a>
+    </div>
+
+</div>

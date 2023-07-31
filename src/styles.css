@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.app-button {
+    @apply w-full py-3 text-center hover:bg-indigo-900 cursor-pointer bg-gradient-to-r from-indigo-700 to-violet-700
+    flex flex-row justify-center items-center gap-x-2 hover:from-indigo-900 hover:to-violet-900 transition-all
+   rounded-md mt-4 text-white uppercase font-semibold text-xs dark:from-indigo-600 dark:to-violet-600
+   disabled:from-slate-200 disabled:to-slate-200
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
