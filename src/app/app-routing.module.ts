@@ -5,7 +5,7 @@ import { BridgeComponent } from './bridge/bridge.component';
 
 const routes: Routes = [
   { path: '', component: DeployComponent },
-  { path: '', component: DeployComponent },
+  { path: 'deploy', component: DeployComponent },
   { path: 'bridge', component: BridgeComponent }
 ];
 
