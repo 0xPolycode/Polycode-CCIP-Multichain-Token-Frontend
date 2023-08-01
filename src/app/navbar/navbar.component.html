@@ -1,4 +1,4 @@
-<div class="w-screen flex flex-row justify-center py-4 border-b border-slate-100 absolute top-0 left-0 bg-white">
+<div class="w-screen flex flex-row justify-center py-4 border-b border-slate-100 absolute top-0 left-0 ">
     <div class="max-w-5xl flex flex-row items-center justify-between w-full">
         <div class="flex flex-row gap-x-4 items-center">
             <img class="h-5" src="../../assets/mct-logo.png" alt="" srcset="">
@@ -20,8 +20,9 @@
                 Bridge                  
             </div>
             <div (click)="logOut()" *ngIf="address$ | async as address" 
-                class="rounded-full flex items-center flex-row gap-x-2 px-6 hover:bg-indigo-700 cursor-pointer hover:text-white transition-all
-                 normal-case font-normal text-xs py-3 bg-slate-100">
+                class="rounded-full border border-slate-200 flex items-center flex-row gap-x-2 px-6 font-medium
+                 hover:bg-indigo-700 cursor-pointer hover:text-white transition-all
+                 normal-case text-xs py-3 bg-slate-100">
                 <div>
                     {{address | shorten:4:4}}
                 </div>

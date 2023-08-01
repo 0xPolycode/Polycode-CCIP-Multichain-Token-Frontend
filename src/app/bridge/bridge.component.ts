@@ -64,6 +64,10 @@ export class BridgeComponent implements OnInit {
     this.tokenSelectModalVisibleSub.next(!this.tokenSelectModalVisibleSub.value)
   }
 
+  setMaxValue() {
+    this.tokenAmountFormControl.setValue("300")
+  }
+
   bridgeToken() {
 
     this.bridgeProcessingSub.next(true)

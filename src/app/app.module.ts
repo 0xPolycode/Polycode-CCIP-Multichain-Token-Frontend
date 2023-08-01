@@ -8,6 +8,7 @@ import { BridgeComponent } from './bridge/bridge.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShortenPipe } from './shared/pipes/shorten.pipe';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ShortenPipe } from './shared/pipes/shorten.pipe';
     DeployComponent,
     BridgeComponent,
     NavbarComponent,
-    ShortenPipe
+    ShortenPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
