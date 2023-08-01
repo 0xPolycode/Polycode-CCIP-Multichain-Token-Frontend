@@ -11,7 +11,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class BridgeComponent implements OnInit {
 
-  itemsSub = new BehaviorSubject<{name: string, balance: number, address: string}[]>([])
+  itemsSub = new BehaviorSubject<{name: string, balance: number, symbol: string, address: string}[]>([])
 
   selectedDestinationSub = new BehaviorSubject("Optimsim Goerli")
   selectedDestination$ = this.selectedDestinationSub.asObservable()
@@ -86,9 +86,9 @@ export class BridgeComponent implements OnInit {
     setTimeout(() => {
       this.pc.getTokens().then(res => {
         res.return_values[0].forEach((item: any) => {
-          if(item[4] !== 0) {
+          if(item[4] > 0) {
             this.itemsSub.next(this.itemsSub.value.concat([
-              { name: item[1], balance: item[4], address: item[0] }
+              { name: item[1], balance: item[4], symbol: item[2], address: item[0] }
             ]))
           }
         })

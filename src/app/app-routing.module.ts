@@ -4,7 +4,8 @@ import { DeployComponent } from './deploy/deploy.component';
 import { BridgeComponent } from './bridge/bridge.component';
 
 const routes: Routes = [
-  { path: 'deploy', component: DeployComponent },
+  { path: '', component: DeployComponent },
+  { path: '', component: DeployComponent },
   { path: 'bridge', component: BridgeComponent }
 ];
 
