@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PolycodeService } from '../shared/polycode.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  address$ = this.pc.address$
+
+  constructor(private pc: PolycodeService) { }
 
   ngOnInit(): void {
+  }
+
+  logOut() {
+    this.pc.logOut()
   }
 
 }

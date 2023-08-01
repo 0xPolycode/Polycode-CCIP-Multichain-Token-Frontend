@@ -32,7 +32,7 @@ export class DeployComponent {
 
   constructor(private polycode: PolycodeService) { }
 
-  showTestnetsSub = new BehaviorSubject(false)
+  showTestnetsSub = new BehaviorSubject(true)
   showTestnets$ = this.showTestnetsSub.asObservable()
 
   toggleTestnets() {
