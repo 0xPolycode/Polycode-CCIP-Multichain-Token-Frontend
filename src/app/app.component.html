@@ -6,7 +6,7 @@
   <div *ngIf="address$ | async; else authWallet" class="pt-12">
     <router-outlet></router-outlet>
   </div>
-  <div class="flex flex-row justify-center py-20 text-slate-700 tracking-widest text-sm border-t">
+  <div class="flex flex-row justify-center py-20 dark:text-slate-100 text-slate-700 tracking-widest text-sm border-t dark:border-slate-800">
     <div class="flex flex-col items-center gap-y-4">
       <div>Powered by Chainlink CCIP</div>
       <img class="h-8" src="../assets/ccip.png" alt="" srcset="">
