@@ -6,8 +6,8 @@
 }
 
 .app-button {
-    @apply w-full py-3 text-center hover:bg-indigo-900 cursor-pointer bg-gradient-to-r from-indigo-700 to-violet-700
-    flex flex-row justify-center items-center gap-x-2 hover:from-indigo-900 hover:to-violet-900 transition-all
+    @apply w-full py-3 text-center hover:bg-fuchsia-900 cursor-pointer bg-gradient-to-r from-rose-700 to-fuchsia-700
+    flex flex-row justify-center items-center gap-x-2 hover:from-rose-800 hover:to-fuchsia-900 transition-all
    rounded-md mt-4 text-white uppercase font-semibold text-xs dark:from-indigo-600 dark:to-violet-600
    disabled:from-slate-200 disabled:to-slate-200 dark:disabled:bg-slate-700
 }

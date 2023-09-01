@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShortenPipe } from './shared/pipes/shorten.pipe';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { CrossChainTxComponent } from './cross-chain-tx/cross-chain-tx.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     BridgeComponent,
     NavbarComponent,
     ShortenPipe,
-    LoaderComponent
+    LoaderComponent,
+    CrossChainTxComponent
   ],
   imports: [
     BrowserModule,

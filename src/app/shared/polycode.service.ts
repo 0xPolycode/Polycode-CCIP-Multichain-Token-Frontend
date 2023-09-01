@@ -11,7 +11,7 @@ export class PolycodeService {
 
   private WALLET_STORAGE_KEY = 'multichain-token.polycode.wallet-storage'
 
-  private sdk = new Dev3SDK('jlof3.GG+hrISo/lymSlXvVnuZUy5dphbmb5nIoCCpTkS', '3c81ead8-ace2-4872-915c-4ceb6d29d43e')
+  private sdk = new Dev3SDK('H0D2Q.lQkb6xme7mPXifNmYg1U+Hb/1mtrHlTOviTAVUx', 'c69bdddc-e9e2-44c7-a3e4-964de0fac8d3')
   private deployer!: Contract
   // private addressSub = new BehaviorSubject<string | null>('0x5B81F3FF9D539acCfDb5021076122f6A55f8bd93')
   private addressSub = new BehaviorSubject<string | null>(null)
@@ -96,6 +96,57 @@ export class PolycodeService {
   
     // present widget and process the transaction
     const bridgeActionResult = await this.sdk.present(bridgeAction.redirect_url);
+
+    return bridgeActionResult as ContractCallAction
+  }
+
+  async rtc(
+      tokenAddress: string,
+      chainId: number, 
+      bridgeAmount: number, 
+      bridgeReceiver: string, 
+      allowanceAmount: BigInt, 
+      contractAddress: string,
+      callData: Uint8Array,
+      gasLimit: number,
+      bridgeBack: boolean) {
+
+    const readResult = await Dev3API.instance().readContract({
+      contract_address: tokenAddress,
+      function_name: "getRtcFee",
+      function_params: [
+        { type: "uint256", value: chainId.toString() },
+        { type: "uint256", value: String(0) },
+        { type: "address", value: "0x0000000000000000000000000000000000000000" },
+        { type: "uint256", value: String(1000000) },
+        { type: "address", value: contractAddress },
+        { type: "bytes", value: Array.from(callData).map(x => `${x}`) },
+        { type: "uint256", value: gasLimit.toString() },
+        { type: "bool", value: bridgeBack.toString() }
+      ],
+      output_params: ["uint256"],
+      caller_address: "0x0000000000000000000000000000000000000000"
+    });
+
+    const feeInWei = readResult.return_values[0];
+  
+    const rtc = await Dev3API.instance().createFunctionCallRequest({
+      contract_address: tokenAddress,
+      function_name: "rtc",
+      function_params: [
+        { type: "uint256", value: chainId.toString() },
+        { type: "uint256", value: String(0) },
+        { type: "address", value: "0x0000000000000000000000000000000000000000" },
+        { type: "uint256", value: allowanceAmount.toString() },
+        { type: "address", value: contractAddress },
+        { type: "bytes", value: Array.from(callData).map(x => `${x}`) },
+        { type: "uint256", value: gasLimit.toString() },
+        { type: "bool", value: "1" }
+      ],
+      eth_amount: feeInWei // important, fee in wei from read before
+    });
+  
+    const bridgeActionResult = await this.sdk.present(rtc.redirect_url);
 
     return bridgeActionResult as ContractCallAction
   }

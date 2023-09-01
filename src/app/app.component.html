@@ -1,18 +1,18 @@
 <div class="w-screen flex flex-col justify-between dark:from-slate-800 dark:to-slate-700
- min-h-screen bg-gradient-to-b from-blue-50 to-white">
+ min-h-screen bg-gradient-to-b from-white to-pink-50">
  <div class="absolute">
   <app-navbar></app-navbar>
  </div>
-  <div *ngIf="address$ | async; else authWallet" class="pt-12">
+  <div *ngIf="address$ | async; else authWallet" class="pt-28">
     <router-outlet></router-outlet>
   </div>
-  <div class="flex flex-row justify-center py-20 dark:text-slate-100 text-slate-700 tracking-widest text-sm border-t dark:border-slate-800">
+  <!-- <div class="flex flex-row justify-center py-20 dark:text-slate-100 text-slate-700 tracking-widest text-sm dark:border-slate-800">
     <div class="flex flex-col items-center gap-y-4">
       <div>Powered by Chainlink CCIP</div>
       <img class="h-8" src="../assets/ccip.png" alt="" srcset="">
     </div>
 
-  </div>
+  </div> -->
 </div>
 
 <ng-template #authWallet>

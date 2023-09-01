@@ -1,16 +1,16 @@
 <div *ngIf="(tokenBridgedHash$ | async)?.length === 0" class="w-full flex flex-row justify-center py-24">
     <div class="max-w-xl w-full bg-white dark:bg-slate-800 dark:border-slate-900 border border-slate-200 p-8 rounded-md">
-        <div class="uppercase font-bold dark:text-indigo-200 text-indigo-700 mb-6 items-center
+        <div class="uppercase font-bold dark:text-indigo-200 text-rose-700 mb-6 items-center
      text-center text-lg flex flex-col gap-y-3">
 
      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
         <path fill-rule="evenodd" d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 013.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 10-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 00-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 00-4.392-4.392 49.422 49.422 0 00-7.436 0A4.756 4.756 0 003.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 101.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 013.01-3.01c1.19-.09 2.392-.135 3.605-.135zm-6.97 6.22a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 004.392 4.392 49.413 49.413 0 007.436 0 4.756 4.756 0 004.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 00-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 01-3.01 3.01 47.953 47.953 0 01-7.21 0 3.256 3.256 0 01-3.01-3.01 47.759 47.759 0 01-.1-1.759L6.97 15.53a.75.75 0 001.06-1.06l-3-3z" clip-rule="evenodd" />
       </svg>
-            <div>Bridge Multichain ERC20</div>
+            <div class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-700 to-rose-600">Bridge Multichain ERC20</div>
         </div>
 
-        <div class="uppercase font-semibold dark:text-indigo-200 text-indigo-700 text-sm">
-            1. Select networks
+        <div class="uppercase font-semibold dark:text-indigo-200 text-rose-700 text-sm">
+            Select networks
         </div>
         <div class="w-full mt-2 gap-y-1 grid grid-cols-12 text-xs text-slate-700">
             <div class="uppercase font-medium text-[10px] text-slate-400 col-span-7 ">
@@ -44,8 +44,8 @@
             </div>
         </div>
 
-        <div class="uppercase font-semibold mt-8 text-indigo-700 dark:text-indigo-200 text-sm">
-            2. Select token
+        <div class="uppercase font-semibold mt-8 text-rose-700 dark:text-indigo-200 text-sm">
+            Select token
         </div>
 
         <div *ngIf="itemsSub | async as items; else loading" class="mt-2 flex flex-row">
@@ -76,8 +76,8 @@
         </ng-template>
         
         
-        <div class="uppercase font-semibold mt-8 dark:text-indigo-200 text-indigo-700 text-sm">
-            3. Enter amount
+        <div class="uppercase font-semibold mt-8 dark:text-indigo-200 text-rose-700 text-sm">
+            Enter amount
         </div>
         <div class="w-full font-mono px-4 border text-slate-700 rounded-md border-slate-100 dark:border-slate-600 mt-2">
             <input [formControl]="tokenAmountFormControl" placeholder="1000.00" class="outline-none dark:bg-transparent w-full py-3" type="text">
@@ -147,7 +147,7 @@
     <div class="max-w-md w-full bg-white rounded-md">
         <div class="pt-8 pb-4 text-slate-700 font-semibold px-8 flex flex-row justify-between uppercase text-sm">
             <div></div>
-            <div class="text-indigo-700">Select Token</div>
+            <div class="text-rose-700">Select Token</div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
